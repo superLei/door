@@ -1,0 +1,102 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>update</groupId>
+  <artifactId>door</artifactId>
+  <version>0.0.1</version>
+  <packaging>jar</packaging>
+
+
+	<!--<repositories>-->
+		<!--<repository>-->
+			<!--<id>public</id>-->
+			<!--<name>Public Repositories</name>-->
+			<!--<url>http://192.168.1.40:8081/nexus/content/groups/public/</url>-->
+			<!--<releases>-->
+				<!--<enabled>true</enabled>-->
+			<!--</releases>-->
+			<!--<snapshots>-->
+				<!--<enabled>true</enabled>-->
+			<!--</snapshots>-->
+		<!--</repository>-->
+	<!--</repositories>-->
+	
+	<!--<pluginRepositories>-->
+	<!--<pluginRepository>-->
+		<!--<id>public</id>-->
+		<!--<name>Public Repositories</name>-->
+		<!--<url>http://192.168.1.40:8081/nexus/content/groups/public/</url>-->
+		<!--<releases>-->
+			<!--<enabled>true</enabled>-->
+		<!--</releases>-->
+		<!--<snapshots>-->
+			<!--<enabled>true</enabled>-->
+		<!--</snapshots>-->
+	<!--</pluginRepository>-->
+<!--</pluginRepositories>  -->
+
+  <name>door</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160810</version>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.9.10</version>
+		</dependency>
+	</dependencies>
+
+
+ <build>
+	<plugins>
+	
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jar-plugin</artifactId>
+			<configuration>
+				<archive>
+					<manifest>
+						<addClasspath>true</addClasspath>
+						<classpathPrefix>lib/</classpathPrefix>
+						<mainClass>update.door.InitializationShop</mainClass><!-- 你项目中的主类 -->
+					</manifest>
+				</archive>
+			</configuration>
+		</plugin>
+		
+		 <plugin>  
+        <groupId>org.apache.maven.plugins</groupId>  
+        <artifactId>maven-dependency-plugin</artifactId>  
+        <executions>  
+            <execution>  
+                <id>copy</id>  
+                <phase>package</phase>  
+                <goals>  
+                    <goal>copy-dependencies</goal>  
+                </goals>  
+                <configuration>  
+                    <outputDirectory>./target/lib</outputDirectory><!-- 项目中依赖包打包后的目录 -->
+                     </configuration>  
+            </execution>  
+        </executions>  
+    </plugin>  
+	</plugins>
+ </build>
+	
+	
+</project>
